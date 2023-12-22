@@ -1,57 +1,54 @@
-# NimoTV bot
+# NimoTV Bot
 
-## 1. Description
+## Overview
 
-I would like to show you a bot which is used in NimoTV website to help users enter any idol's room to advertise KC trading (Diamond trading). See how to use in next section.
+This Python script is designed to automate interactions with the NimoTV website using Selenium and BeautifulSoup. The bot opens multiple tabs, logs in (if specified), and collects information from live streams on the [NimoTV Lives](https://www.nimo.tv/lives) page.
 
-## 2. How to use
+## Prerequisites
 
-It is very simple.
+Before running the script, ensure you have the necessary dependencies installed. You can install them using the following command:
 
-**Step 1**: Install the requirements by using command: pip3 install -r requirment.txt
+```bash
+pip install beautifulsoup4 selenium
+```
 
-**Step 2**: Open a terminal and use this command to show parameters that can be used: `python3 nimobot.py -h`
+## Usage
 
-`usage: nimobot.py [-h] [--waitfirsttime WAITFIRSTTIME] [--waitlongtime WAITLONGTIME] [--waitshorttime WAITSHORTTIME] [--inittimeset INITTIMESET]\
-                  [--opentabnum OPENTABNUM] [--username USERNAME] [--password PASSWORD] [--headless HEADLESS] [--nonlogin NONLOGIN] [--url URL]\
-                  [--urlonlyset URLONLYSET] [--specificurl SPECIFICURL]`
+### Command-Line Arguments
 
-`optional arguments:`
+- `--waitlongtime`: Wait time for long intervals (default: 10 seconds).
+- `--waitshorttime`: Wait time for short intervals (default: 5 seconds).
+- `--opentabnum`: Number of tabs to open (default: 10).
+- `--username`: NimoTV account username (required).
+- `--password`: NimoTV account password (required).
+- `--headless`: Run Chrome in headless mode (default: true).
+- `--nonlogin`: Choose not to log in to the NimoTV account (default: false).
+- `--url`: Website URL to scrape (default: [https://www.nimo.tv/lives](https://www.nimo.tv/lives)).
+- `--urlonlyset`: Use a specific URL (default: false).
+- `--specificurl`: Specific URL to use (default: empty string).
+- `--egg`: Collect eggs during the process (default: false).
 
-`-h, --help show this help message and exit`
+### Running the Script
 
-`--waitfirsttime WAITFIRSTTIME 
-                       Wait first time`
+Example:
 
-`--waitlongtime WAITLONGTIME
-                       Wait long time`
-                       
-`--waitshorttime WAITSHORTTIME
-                      Wait short time`
-                      
-`--inittimeset INITTIMESET
-                      Force initialize time`
-                      
-`--opentabnum OPENTABNUM
-                      Number of tabs to open`
-                      
-`--username USERNAME   User input`
+```bash
+python nimo_bot.py --username your_username --password your_password --opentabnum 5
+```
 
-`--password PASSWORD   Password input`
+### Notes
 
-`--headless HEADLESS   Run Chrome in headless mode`
+1. The script uses Chrome as the browser. Ensure you have the [ChromeDriver](https://sites.google.com/chromium.org/driver/) installed and added to your system PATH.
 
-`--nonlogin NONLOGIN   Choose NOT to login account`
+2. The script is designed for the specific structure of the NimoTV website. If the website structure changes, adjustments may be needed.
 
-`--url URL             Website URL`
+3. If collecting eggs (`--egg` set to true), the script will check for and click on egg images on each opened tab.
 
-`--urlonlyset URLONLYSET
-                      Use specific URL`
-                      
-`--specificurl SPECIFICURL
-                      Specific URL`
+## Disclaimer
 
-**Example**:
+This script is provided as-is and may not comply with the terms of service of the NimoTV website. Use it responsibly and at your own risk. The authors are not responsible for any misuse or consequences arising from the use of this script.
+
+## Example
 - If use default, please remember put your account into `--username` and `--password` because they are the required \
 `python3 nimobot.py --username=abcdef --pasword=12345 `
 
